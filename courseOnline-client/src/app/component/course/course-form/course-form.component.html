@@ -1,0 +1,77 @@
+<mat-card style="display: flex; 
+justify-content: center; align-items: center;
+position: relative;">
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <h2>{{status === 'add'? 'add' : 'update'}} course</h2>
+    <div style="display: flex; padding: 8%, 4%; flex-direction: column;
+                justify-content: center; align-items: center;">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Course Title</mat-label>
+        <input matInput formControlName="title"
+          value={{titleVal}}>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" 
+        placeholder={{descriptionVal}}
+          value={{descriptionVal}}>
+        </textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teacher ID</mat-label>
+        <input matInput formControlName="teacherId"
+         placeholder={{teacherIdVal}}
+         value={{teacherIdVal}}>
+      </mat-form-field>
+
+      <h3>Lessons</h3>
+      <div formArrayName="lessons">
+        <div class="lesson-container">
+
+          @if(course?.lessons){
+          @for (lesson of course.lessons; track $index) {
+          <div [formGroupName]="$index">
+            <mat-form-field appearance="outline">
+              <mat-label>Lesson Title</mat-label>
+              <input matInput formControlName="title" value={{lesson.title}}>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Lesson Content</mat-label>
+              <textarea matInput formControlName="content" value={{lesson.content}}>
+            </textarea>
+            </mat-form-field>
+
+
+          </div>
+          }
+        }
+
+          <button mat-button color="primary" (click)="addLesson()">
+            Add Lesson
+          </button>
+
+         
+          @if(isAddLesson){
+
+        }
+
+        </div>
+      </div>
+      <br><br>
+    </div>
+
+    <div class="example-button-container" style="margin-left: 45px;">
+      <a mat-fab extended routerLink="." (click)="submit()">
+        <mat-icon>{{status === 'add'? 'add' : 'update'}}</mat-icon>
+        {{status === 'add'? 'add' : 'update'}}
+      </a>
+    </div>
+  </form>
+</mat-card>

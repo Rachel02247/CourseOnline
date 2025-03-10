@@ -1,0 +1,43 @@
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%; /* גובה מלא של המסך */
+    text-align: center;
+    /* z-index: 10; */
+
+  }
+  *{
+    z-index: 6!;
+  }
+
+  .example-button-container {
+    margin-top: 2%; /* רווח מעל הכפתור */
+  }
+  /*
+  #bg{
+    width: 100%;
+    height: 100%;
+    top: -15%;
+    background-image: url('./../../../../public/img/1.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-color: azure;
+    z-index: 0;
+    position: relative;
+  }
+  
+ 
+  #square{
+    width: 70%;
+    height: 55%;
+    z-index: 5;
+    background-color: rgb(205, 242, 242);
+    opacity: 0.5;
+    margin-top: 5vh;
+    position: absolute;
+    border-radius: 0 20px 20px 0;
+}
+*/

@@ -1,0 +1,40 @@
+<mat-card appearance="outlined" style="size: 100%; height: 100%; display: flex;
+  flex-direction: column; padding: 2% 4%; ">
+  <mat-card-header>
+    <mat-card-title>{{course?.title}}</mat-card-title>
+    <mat-card-subtitle>{{course?.description}}</mat-card-subtitle>
+  </mat-card-header><br>
+  <mat-card-header>
+    <mat-card-subtitle>teacher {{course?.teacherId}}</mat-card-subtitle>
+  </mat-card-header><br>
+
+  <mat-card-content>lessons</mat-card-content>
+  @if(course?.lessons){
+  @for( lesson of course.lessons; track $index){
+  <mat-list>
+    <mat-list-item>{{ lesson }}</mat-list-item>
+  </mat-list>
+  }
+  }
+
+  <mat-card-actions align="end">
+  </mat-card-actions>
+
+  @if(isTeacher){
+  <div style="display: flex; flex-direction: row; justify-content: space-between; width: 20%;">
+    <div class="example-button-container">
+      <a mat-fab extended routerLink="." (click)="deleteCourse()">
+        <mat-icon>delete</mat-icon>
+        delete
+      </a>
+    </div>
+
+    <div class="example-button-container">
+      <a mat-fab extended routerLink="." (click)="editCourse()">
+        <mat-icon>edit</mat-icon>
+        edit
+      </a>
+    </div>
+  </div>
+  }
+</mat-card>

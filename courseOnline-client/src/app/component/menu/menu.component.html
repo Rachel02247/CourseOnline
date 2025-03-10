@@ -1,0 +1,29 @@
+<div id="menu" >
+
+  <div class="example-button-container">
+    <a mat-fab extended routerLink="." (click)="login()">
+      login
+    </a>
+  </div>
+
+<button mat-button 
+(click)="navToHome()">
+Home
+</button>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu" >Our Courses</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item (click)="navToCourses()">all courses</button>
+  <button mat-menu-item>python</button>
+  <button mat-menu-item>Java</button>
+  <button mat-menu-item>.Net</button>
+  <button mat-menu-item>React</button>
+  <button mat-menu-item>AI</button>
+  <button mat-menu-item>cyber</button>
+</mat-menu>
+
+<!-- <mat-menu> -->
+
+<!-- </mat-menu> -->
+</div>
