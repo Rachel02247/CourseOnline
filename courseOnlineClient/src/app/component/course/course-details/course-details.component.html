@@ -1,6 +1,13 @@
 <mat-card appearance="outlined" style="size: 100%; height: 100%; display: flex;
   flex-direction: column; padding: 2% 4%; height: fit-content; ">
-  <mat-card-header>
+ 
+ <br>
+ <div><a mat-fab extended routerLink="." (click)="navBack()">
+     <mat-icon>home</mat-icon>
+   </a></div>
+ <br>
+
+ <mat-card-header>
     <mat-card-title>{{course.title}}</mat-card-title>
     <mat-card-subtitle>{{course.description}}</mat-card-subtitle>
   </mat-card-header><br>
@@ -28,11 +35,11 @@
         </a></div>
         <!-- <a mat-button [routerLink]="['/courses', courseId, 'editLesson', lesson.id]" routerLinkActive="active"><mat-icon>edit</mat-icon></a> -->
 
-      <br>
-      <div><a mat-fab extended routerLink="." (click)="deleteLesson(lesson.id)">
-          <mat-icon>delete</mat-icon>
-        </a></div>}
-      <br>
+        <br>
+        <div><a mat-fab extended routerLink="." (click)="deleteLesson(lesson.id)">
+            <mat-icon>delete</mat-icon>
+          </a></div>}
+        <br>
     </mat-list-item>
     <br>
   </mat-card>

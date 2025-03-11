@@ -31,7 +31,7 @@ export class UpdateLessonComponent implements OnInit {
     if (this.lessonForm.valid) {
         this.lessonService.updateLesson(this.courseId, this.lessonId, this.lessonForm.value).subscribe({
             next: res => {
-                this.routerNavigate.navigate([`/courses/${this.courseId}/lessons`]);
+                this.routerNavigate.navigate([`/course/${this.courseId}`]);
             },
             error: err => console.error('Error:', err)
         });

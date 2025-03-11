@@ -75,9 +75,13 @@ editLesson(lessonId: number) {
   }
   deleteLesson(lessonId: number) {
     this.lessonService.deleteLesson(this.courseId, lessonId).subscribe();
+
   }
   addLesson(){
     this.router.navigate([`course/${this.courseId}/addLesson`]);
+  }
+  navBack(){
+    this.router.navigate(['/courses']);
   }
 }
 

@@ -29,7 +29,7 @@ export class AddLessonComponent implements OnInit {
     if (this.lessonForm.valid) {
       this.courseService.addLesson(this.courseId, this.lessonForm.value).subscribe({
         next: res => {
-          this.router.navigate([`/courses/${this.courseId}/lessons`]);
+          this.router.navigate([`/course/${this.courseId}`]);
         },
         error: err => console.error('Error:', err)
       });
