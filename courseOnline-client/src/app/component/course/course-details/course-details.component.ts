@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { log } from 'console';
 import { MatListModule } from '@angular/material/list'
+import { Lesson } from '../../../models/lesson';
+import { LessonService } from '../../../services/lesson/lesson.service';
 
 @Component({
   selector: 'app-course-details',
@@ -27,8 +29,11 @@ export class CourseDetailsComponent implements OnInit {
   isTeacher: boolean = false;
   courseId!: number;
   course!: Partial<Course>;
+  lessons: Lesson[] = [];
+
   constructor(private userService: UserService,
     private courseService: CourseService,
+    private lessonService: LessonService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -38,8 +43,12 @@ export class CourseDetailsComponent implements OnInit {
       this.courseId = params['id'];
       this.loadCourse();
       console.log(this.course);
-      if (this.userService.isTeacher) {
-        this.isTeacher = true;
+      this.isTeacher = this.userService.isTeacher;
+      if (this.courseId) {
+        this.lessonService.getLessons(+this.courseId); 
+        this.lessonService.lessons$.subscribe(lessons => {
+          this.lessons = lessons;
+        });
       }
     });
   }
@@ -55,9 +64,18 @@ export class CourseDetailsComponent implements OnInit {
 
   }
 
-
   editCourse() {
-    this.router.navigate(['/course', this.courseId])
+    this.router.navigate(['/editCourse', this.courseId])
   }
-
+editLesson(lessonId: number) {
+    this.router.navigate([`course/${this.courseId}/editLesson/${lessonId}`]);
+  }
+  deleteLesson(lessonId: number) {
+    this.lessonService.deleteLesson(this.courseId, lessonId);
+  }
+  addLesson(){
+    console.log(this.courseId);
+    this.router.navigate([`course/${this.courseId}/addLesson`]);
+  }
 }
+

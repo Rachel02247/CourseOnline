@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
   
 constructor(private userService: UserService, private router: Router){}
 isLogin: boolean = false;
-
+loginState: 'login' | 'logout' = 'login';
 
 ngOnInit(): void {
   if(this.userService.status != 'none')
@@ -31,6 +31,8 @@ navToCourses(){
 }
 login(){
   this.userService.status = 'login';
+  this.loginState = 'logout'
+
   this.router.navigate(['/auth']);
   }
 }

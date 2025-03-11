@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user';
-import { UserDetailsService } from '../userDetails/user-details.service';
 type PartialUser = Partial<User>;
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class UserService {
   addUser(user: Partial<User>): Observable<User> {
     return this.http.post<User>(`${this.url}auth/${this.status}`, user).pipe(
       tap(user => {
-        this.isTeacher = user.role === 'teacher';
+        this.isTeacher = user.role === 'teacher' || user.role === 'admin';
       }),
       catchError(error => {
         alert("addUser failed: " + error.message);

@@ -1,0 +1,40 @@
+
+<mat-card style="display: flex; 
+justify-content: center; align-items: center;
+position: relative;">
+
+    <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
+
+        <h2>add course</h2>
+        <div style="display: flex; padding: 8%, 4%; flex-direction: column;
+                justify-content: center; align-items: center;">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Course Title</mat-label>
+                <input matInput formControlName="title" formControlName="title" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" formControlName="description" required>
+        </textarea>
+            </mat-form-field>
+
+            @if(isAdmin){
+            <mat-form-field appearance="outline">
+                <mat-label>Teacher ID</mat-label>
+                <input matInput formControlName="teacherId" formControlName="teacherId" required>
+            </mat-form-field>
+            }
+
+        </div>
+        <br><br>
+
+        <div class="example-button-container" style="margin-left: 45px;">
+            <a mat-fab extended routerLink="." (click)="addCourse()">
+                <mat-icon>add</mat-icon>
+                add 
+            </a>
+        </div>
+    </form>
+</mat-card>

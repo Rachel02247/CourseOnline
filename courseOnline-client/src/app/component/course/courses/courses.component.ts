@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
 import { CourseService } from '../../../services/course/course.service';
-import { UserDetailsService } from '../../../services/userDetails/user-details.service';
 import { UserService } from '../../../services/user/user.service';
 import { log } from 'console';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -34,17 +33,12 @@ export class CoursesComponent implements OnInit {
       title: 'course1',
       description: 'description1',
       teacherId: '1',
-      lessons: [{ id: 1, title: "lesson1", courseId: '1', content: 'one two three four' },
-        { id: 2, title: "lesson2", courseId: '1', content: 'five six seven' }]
       },
     {
       id: 2,
       title: 'course2',
       description: 'description2',
       teacherId: '2',
-      lessons: [{ id: 1, title: "lesson1", courseId: '1', content: 'one two three four' },
-        { id: 2, title: "lesson2", courseId: '1', content: 'five six seven' }]
-     
     }
   ];
 
@@ -83,10 +77,12 @@ export class CoursesComponent implements OnInit {
 
   join(course: Course) {
     this.courseActService.joinCourse(parseInt(this.userId ?? ""), course.id);
+    this.userCourses.push(course);
   }
 
   leave(course: Course) {
     this.courseActService.leaveCourse(parseInt(this.userId ?? ""), course.id);
+    this.userCourses = this.userCourses.filter(c => c.id !== course.id);
   }
   deleteCourse(courseId: number) {
     this.courseService.deleteCourse(courseId).subscribe();
@@ -94,11 +90,11 @@ export class CoursesComponent implements OnInit {
 
 
   navToAddCourse() {
-    this.router.navigate(['/course', -1]);
+    this.router.navigate(['/addCourse']);
   }
 
   navToDetails(id: number) {
-    this.router.navigate(['/courseDet', id]);
+    this.router.navigate(['/course', id]);
   }
 
   toggleCourses() {

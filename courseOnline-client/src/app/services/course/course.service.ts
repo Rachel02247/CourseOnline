@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, catchError, forkJoin, map, Observable, of, tap, throwError } from 'rxjs';
 import { Course } from '../../models/course';
-import { UserDetailsService } from '../userDetails/user-details.service';
 import { error } from 'console';
 
 
@@ -25,7 +24,7 @@ export class CourseService {
     );;
   }
 
-  updateCourse(course: Partial<Course>): Observable<Course> {
+  updateCourse(course: Course): Observable<Course> {
     return this.http.put<Course>(`${this.url}/${course.id}`, course).pipe(
       tap(() => this.getCourses()));
   }
@@ -34,7 +33,11 @@ export class CourseService {
   }
 
 
-  addCourse(course: Partial<Course>): Observable<Course> {
+  addCourse(course: Course): Observable<Course> {
+    console.log("add in service");
+   
+    console.log(course);
+    console.log(this.url);
     return this.http.post<Course>(this.url, course).pipe(
       tap(() => this.getCourses()));
   }

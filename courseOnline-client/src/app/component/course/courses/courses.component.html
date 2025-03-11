@@ -8,8 +8,11 @@
   </div>
   }
   <br>
+
+  @if(!isTeacher){
   <mat-slide-toggle (toggleChange)="toggleCourses()">show my courses</mat-slide-toggle>
   <br>
+  }
 
   @for(course of this.courses; track $index)
   {
@@ -26,9 +29,16 @@
       <p>{{course.description}}</p>
     </mat-card-content>
     <mat-card-actions style="display: flex;">
-      <button mat-button (click)="join(course)">Join</button>
-      <button mat-button (click)="leave(course)">Leaving this course</button>
-      <button mat-button (click)="navToDetails(course.id)">more>></button>
+
+      @if(!isTeacher){
+      @if(isUserCourse(course.id)){
+        <button mat-button (click)="leave(course)">Leave</button>
+    }
+    @else{
+        <button mat-button (click)="join(course)">Join</button>
+    }
+  }
+    <button mat-button (click)="navToDetails(course.id)">more>></button>
     </mat-card-actions>
   </mat-card>
   <br>

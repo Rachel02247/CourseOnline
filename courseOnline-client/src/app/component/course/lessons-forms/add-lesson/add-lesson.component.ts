@@ -6,9 +6,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LessonService } from '../../../services/lesson/lesson.service';
+import { LessonService } from '../../../../services/lesson/lesson.service';
 @Component({
-  selector: 'app-add-lesson',
+  selector: 'app-add-lesson-form',
   standalone: true,
   imports: [MatSelectModule, MatRadioModule, MatButtonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule],
   templateUrl: './add-lesson.component.html',
@@ -18,7 +18,7 @@ export class AddLessonComponent implements OnInit {
   lessonForm!: FormGroup;
   courseId = 0;
 
-  constructor(private route: ActivatedRoute,private router: Router, private coursesService: LessonService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private courseService: LessonService, private fb: FormBuilder, private router: Router) {
     this.lessonForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required]
@@ -27,15 +27,11 @@ export class AddLessonComponent implements OnInit {
 
   addLesson() {
     if (this.lessonForm.valid) {
-      this.coursesService.addLesson(this.courseId, this.lessonForm.value).subscribe({
-        next: () => {
-          this.router.navigate(['/course', this.courseId]);
+      this.courseService.addLesson(this.courseId, this.lessonForm.value).subscribe({
+        next: res => {
+          this.router.navigate([`/courses/${this.courseId}/lessons`]);
         },
-        error: err => {
-          console.error('Error: add lesson', err);
-          this.router.navigate(['/course', this.courseId]);
-
-        }
+        error: err => console.error('Error:', err)
       });
     }
   }
