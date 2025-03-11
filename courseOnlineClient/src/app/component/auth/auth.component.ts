@@ -53,20 +53,25 @@ export class AuthComponent implements OnInit {
   }
   submit() {
     
-    if (this.form.valid)
+    // if (this.form.valid)
       {
+        // debugger;
         this.userService.addUser(this.form.value as Partial<User>).subscribe({
+
+
           next: (res) => {
             sessionStorage.setItem('token', res.token);
             sessionStorage.setItem('userId', res.id);               
             sessionStorage.setItem('role', res.role);
             this.router.navigate(['/courses']);
+
           },
           error: (err) => {
             alert(err);
           }
         });
       }
+
   }
 
   errorMessage = signal('');

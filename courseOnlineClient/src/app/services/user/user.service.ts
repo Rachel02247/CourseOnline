@@ -28,7 +28,7 @@ export class UserService {
         this.isTeacher = user.role === 'teacher' || user.role === 'admin';
       }),
       catchError(error => {
-        alert("addUser failed: " + error.message);
+        alert(this.status + " failed: " + error.message);
         return throwError(error);
       })
     );

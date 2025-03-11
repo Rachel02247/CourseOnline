@@ -20,7 +20,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MatDividerModule,
     MatIconModule,
     MatListModule,
-    BrowserModule,
     RouterModule,
   ],
   templateUrl: './course-details.component.html',
@@ -70,13 +69,12 @@ export class CourseDetailsComponent implements OnInit {
     this.router.navigate(['/editCourse', this.courseId])
   }
 editLesson(lessonId: number) {
-    // this.router.navigate([`course/${this.courseId}/editLesson/${lessonId}`]);
+    this.router.navigate([`course/${this.courseId}/editLesson/${lessonId}`]);
   }
   deleteLesson(lessonId: number) {
     this.lessonService.deleteLesson(this.courseId, lessonId).subscribe();
   }
   addLesson(){
-    console.log(this.courseId);
     this.router.navigate([`course/${this.courseId}/addLesson`]);
   }
 }
