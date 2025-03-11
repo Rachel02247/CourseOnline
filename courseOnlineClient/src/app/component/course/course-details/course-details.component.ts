@@ -61,7 +61,9 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   deleteCourse() {
-    this.courseService.deleteCourse(this.courseId);
+    this.courseService.deleteCourse(this.courseId).subscribe(() => {
+      this.router.navigate(['/courses']);
+    });
 
   }
 

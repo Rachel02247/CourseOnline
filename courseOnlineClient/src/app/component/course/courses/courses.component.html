@@ -14,34 +14,37 @@
   <br>
   }
 
-  @for(course of this.courses; track $index)
-  {
-  @if(isMyCourses && isUserCourse(course.id) || !isMyCourses){
-  <br>
-  <mat-card class="example-card" appearance="outlined">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{course.title}}</mat-card-title>
-      <mat-card-subtitle>teacher {{course.teacherId}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="'../../../../../public/img/' + course.id + '.png'" alt="course img">
-    <mat-card-content>
-      <p>{{course.description}}</p>
-    </mat-card-content>
-    <mat-card-actions style="display: flex;">
+  <div style="margin: 2% 4%; display: flex; flex-wrap: wrap; justify-content: space-around; align-items: stretch ;  ">
 
-      @if(!isTeacher){
-      @if(isUserCourse(course.id)){
+    @for(course of this.courses; track $index)
+    {
+    @if(isMyCourses && isUserCourse(course.id) || !isMyCourses){
+    <br>
+    <mat-card class="example-card" appearance="outlined" style="margin-bottom: 30px; justify-items: flex-start;">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{course.title}}</mat-card-title>
+        <mat-card-subtitle>teacher {{course.teacherId}}</mat-card-subtitle>
+      </mat-card-header>
+      <img width="100%" style="padding: 0% 5%;" mat-card-image [src]='"img/" + $index%8 + ".png"' alt="course img">
+      <mat-card-content>
+        <p>{{course.description}}</p>
+      </mat-card-content>
+      <mat-card-actions style="display: flex;">
+
+        @if(!isTeacher){
+        @if(isUserCourse(course.id)){
         <button mat-button (click)="leave(course)">Leave</button>
-    }
-    @else{
+        }
+        @else{
         <button mat-button (click)="join(course)">Join</button>
+        }
+        }
+        <button mat-button (click)="navToDetails(course.id)">more>></button>
+      </mat-card-actions>
+    </mat-card>
+    <br>
     }
-  }
-    <button mat-button (click)="navToDetails(course.id)">more>></button>
-    </mat-card-actions>
-  </mat-card>
-  <br>
-  }
-  }
+    }
+  </div>
 </div>

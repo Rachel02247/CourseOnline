@@ -26,21 +26,7 @@ import { CourseActivityService } from '../../../services/courseActivity/course-a
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
-  courses: Course[] = [
-    {
-      id: 1,
-      title: 'course1',
-      description: 'description1',
-      teacherId: '1',
-      },
-    {
-      id: 2,
-      title: 'course2',
-      description: 'description2',
-      teacherId: '2',
-    }
-  ];
-
+  courses: Course[] = [];
   isTeacher: boolean = false;
   userId = sessionStorage.getItem("userId");
   isMyCourses: boolean = false;
