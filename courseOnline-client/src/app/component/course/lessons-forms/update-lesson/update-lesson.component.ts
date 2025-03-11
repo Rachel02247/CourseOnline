@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lesson } from '../../../../models/lesson';
 import { LessonService } from '../../../../services/lesson/lesson.service';
 @Component({
-  selector: 'app-update-lesson-form',
+  selector: 'app-update-lesson',
   standalone: true,
   imports: [MatSelectModule, MatRadioModule, MatButtonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule],
   templateUrl: './update-lesson.component.html',

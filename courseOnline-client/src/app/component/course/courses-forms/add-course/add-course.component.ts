@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-add-course-form',
+  selector: 'app-add-course',
   standalone: true,
   imports: [MatSelectModule,
     MatRadioModule,

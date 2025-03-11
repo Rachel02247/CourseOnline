@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Course } from '../../../models/course';
 import { CourseService } from '../../../services/course/course.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -11,6 +11,7 @@ import { log } from 'console';
 import { MatListModule } from '@angular/material/list'
 import { Lesson } from '../../../models/lesson';
 import { LessonService } from '../../../services/lesson/lesson.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-course-details',
@@ -19,7 +20,9 @@ import { LessonService } from '../../../services/lesson/lesson.service';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    BrowserModule,
+    RouterModule,
   ],
   templateUrl: './course-details.component.html',
   styleUrl: './course-details.component.css'
@@ -68,10 +71,10 @@ export class CourseDetailsComponent implements OnInit {
     this.router.navigate(['/editCourse', this.courseId])
   }
 editLesson(lessonId: number) {
-    this.router.navigate([`course/${this.courseId}/editLesson/${lessonId}`]);
+    // this.router.navigate([`course/${this.courseId}/editLesson/${lessonId}`]);
   }
   deleteLesson(lessonId: number) {
-    this.lessonService.deleteLesson(this.courseId, lessonId);
+    this.lessonService.deleteLesson(this.courseId, lessonId).subscribe();
   }
   addLesson(){
     console.log(this.courseId);

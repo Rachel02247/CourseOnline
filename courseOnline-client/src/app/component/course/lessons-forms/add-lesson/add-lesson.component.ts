@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from '../../../../services/lesson/lesson.service';
 @Component({
-  selector: 'app-add-lesson-form',
+  selector: 'app-add-lesson',
   standalone: true,
   imports: [MatSelectModule, MatRadioModule, MatButtonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule],
   templateUrl: './add-lesson.component.html',

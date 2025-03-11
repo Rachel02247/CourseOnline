@@ -8,31 +8,37 @@
     <mat-card-subtitle>teacher {{course.teacherId}}</mat-card-subtitle>
   </mat-card-header><br>
 
-  <mat-card-content><h2>lessons</h2></mat-card-content>
+  <mat-card-content>
+    <h2>lessons</h2>
+  </mat-card-content>
   @if(lessons){
   @for( lesson of lessons; track $index){
-    <br>
+  <br>
   <mat-card>
     <br>
     <mat-list-item style="padding: 0 5%;">
       <h3>{{ lesson.title }}</h3>
       <p>{{lesson.content}}</p>
+
       @if(isTeacher){
-        <br>
+
+      <br>
       <div><a mat-fab extended routerLink="." (click)="editLesson(lesson.id)">
-        <mat-icon>edit</mat-icon>
-      </a></div>
+          <mat-icon>edit</mat-icon>
+        </a></div>
+        <a mat-button [routerLink]="['/courses', courseId, 'editLesson', lesson.id]" routerLinkActive="active"><mat-icon>edit</mat-icon></a>
+
       <br>
       <div><a mat-fab extended routerLink="." (click)="deleteLesson(lesson.id)">
-        <mat-icon>delete</mat-icon>
-      </a></div>}
+          <mat-icon>delete</mat-icon>
+        </a></div>}
       <br>
     </mat-list-item>
-<br>
+    <br>
   </mat-card>
   }
   <br>
-}
+  }
   <div>
     <a mat-fab extended routerLink="." (click)="addLesson()">
       <mat-icon>add</mat-icon>
@@ -40,7 +46,7 @@
     </a>
   </div>
   <br>
-  
+
 
   <mat-card-actions align="end">
   </mat-card-actions>

@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-update-course-form',
+  selector: 'app-edit-course',
   standalone: true,
   imports: [MatSelectModule,
     MatRadioModule,
