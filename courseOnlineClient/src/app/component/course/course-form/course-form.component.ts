@@ -11,7 +11,6 @@ import { UserService } from '../../../services/user/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
-import { log } from 'console';
 
 @Component({
   selector: 'app-edit-course',

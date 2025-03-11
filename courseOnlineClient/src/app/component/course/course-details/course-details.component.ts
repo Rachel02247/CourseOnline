@@ -7,7 +7,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { log } from 'console';
 import { MatListModule } from '@angular/material/list'
 import { Lesson } from '../../../models/lesson';
 import { LessonService } from '../../../services/lesson/lesson.service';

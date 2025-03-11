@@ -10,7 +10,6 @@ import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
 import { CourseService } from '../../../services/course/course.service';
 import { UserService } from '../../../services/user/user.service';
-import { log } from 'console';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CourseActivityService } from '../../../services/courseActivity/course-activity.service';
 
